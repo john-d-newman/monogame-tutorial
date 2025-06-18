@@ -273,11 +273,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj",
       "projectName": "MonoGameLibrary",
-      "projectPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj",
+      "projectPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj",
       "packagesPath": "C:\\Users\\johnn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\MonoGameLibrary\\obj\\",
+      "outputPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\johnn\\AppData\\Roaming\\NuGet\\NuGet.Config"

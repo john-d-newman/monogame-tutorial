@@ -108,3 +108,4 @@ C:\Users\johnn\Documents\monogame-tutorial\tutorial\obj\Debug\net8.0\refint\tuto
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\obj\Debug\net8.0\tutorial.pdb
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\obj\Debug\net8.0\tutorial.genruntimeconfig.cache
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\obj\Debug\net8.0\ref\tutorial.dll
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\images\tilemap-definition.xml

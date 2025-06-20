@@ -1,4 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/images/atlas-definition.xml","C:\Users\johnn\Documents\monogame-tutorial\tutorial\Content\bin\DesktopGL\Content\images/atlas-definition.xml","CopyItem","File",916,916,0.0036966
-"C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/images/atlas.png","C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/bin/DesktopGL/Content/images/atlas.xnb","TextureProcessor","Texture2DContent",590,16469,0.1897346
+"C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/images/atlas.png","C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/bin/DesktopGL/Content/images/atlas.xnb","TextureProcessor","Texture2DContent",1844,65621,0.2198221
 "C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/images/logo.png","C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/bin/DesktopGL/Content/images/logo.xnb","TextureProcessor","Texture2DContent",16734,311381,0.0257364
+"C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/images/tilemap-definition.xml","C:\Users\johnn\Documents\monogame-tutorial\tutorial\Content\bin\DesktopGL\Content\images/tilemap-definition.xml","CopyItem","File",694,694,0.0032164

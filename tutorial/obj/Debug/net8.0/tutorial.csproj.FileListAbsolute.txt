@@ -115,3 +115,4 @@ C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\aud
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\audio\theme.xnb
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\fonts\04B_30.xnb
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\fonts\04B_30_5x.xnb
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\images\background-pattern.xnb

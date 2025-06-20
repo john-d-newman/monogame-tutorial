@@ -4,10 +4,16 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/audio/bounce.wav</File>
+    <File>C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/audio/collect.wav</File>
+    <File>C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/audio/theme.ogg</File>
     <File>C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/images/atlas.png</File>
     <File>C:/Users/johnn/Documents/monogame-tutorial/tutorial/Content/images/logo.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>

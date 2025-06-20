@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using MonoGameLibrary;
 using MonoGameLibrary.Graphics;
 using MonoGameLibrary.Input;
@@ -32,6 +34,12 @@ public class Game1 : Core
     // Defines the bounds of the room that the slime and bat are contained within.
     private Rectangle _roomBounds;
 
+        // The sound effect to play when the bat bounces off the edge of the screen.
+    private SoundEffect _bounceSoundEffect;
+
+    // The sound effect to play when the slime eats a bat.
+    private SoundEffect _collectSoundEffect;
+
     // Speed mult when moving
     private const float MOVEMENT_SPEED = 5.0f;
 
@@ -49,12 +57,12 @@ public class Game1 : Core
         base.Initialize();
         Rectangle screenBounds = GraphicsDevice.PresentationParameters.Bounds;
 
-       _roomBounds = new Rectangle(
-            (int)_tilemap.TileWidth,
-            (int)_tilemap.TileHeight,
-            screenBounds.Width - (int)_tilemap.TileWidth * 2,
-            screenBounds.Height - (int)_tilemap.TileHeight * 2
-        );
+        _roomBounds = new Rectangle(
+             (int)_tilemap.TileWidth,
+             (int)_tilemap.TileHeight,
+             screenBounds.Width - (int)_tilemap.TileWidth * 2,
+             screenBounds.Height - (int)_tilemap.TileHeight * 2
+         );
 
         // Initial slime position will be the center tile of the tile map.
         int centerRow = _tilemap.Rows / 2;
@@ -66,6 +74,7 @@ public class Game1 : Core
 
         // Assign the initial random velocity to the bat.
         AssignRandomBatVelocity();
+        
     }
 
     protected override void LoadContent()
@@ -81,9 +90,30 @@ public class Game1 : Core
         _bat = atlas.CreateAnimatedSprite("bat-animation");
         _bat.Scale = new Vector2(4.0f, 4.0f);
         //_bat.Effects = SpriteEffects.FlipVertically | SpriteEffects.FlipHorizontally;
-                // Create the tilemap from the XML configuration file.
+        // Create the tilemap from the XML configuration file.
         _tilemap = Tilemap.FromFile(Content, "images/tilemap-definition.xml");
         _tilemap.Scale = new Vector2(4.0f, 4.0f);
+        
+                // Load the bounce sound effect
+        _bounceSoundEffect = Content.Load<SoundEffect>("audio/bounce");
+
+        // Load the collect sound effect
+        _collectSoundEffect = Content.Load<SoundEffect>("audio/collect");
+
+        // Load the background theme music
+        Song theme = Content.Load<Song>("audio/theme");
+
+        // Ensure media player is not already playing on device, if so, stop it
+        if (MediaPlayer.State == MediaState.Playing)
+        {
+            MediaPlayer.Stop();
+        }
+
+        // Play the background theme music.
+        MediaPlayer.Play(theme);
+
+        // Set the theme music to repeat.
+        MediaPlayer.IsRepeating = true;
 
     }
 
@@ -183,13 +213,15 @@ public class Game1 : Core
         if (normal != Vector2.Zero)
         {
             _batVelocity = Vector2.Reflect(_batVelocity, normal);
+                        // Play the bounce sound effect
+            _bounceSoundEffect.Play();
         }
 
         _batPosition = newBatPosition;
 
         if (slimeBounds.Intersects(batBounds))
         {
-             // Choose a random row and column based on the total number of each
+            // Choose a random row and column based on the total number of each
             int column = Random.Shared.Next(1, _tilemap.Columns - 1);
             int row = Random.Shared.Next(1, _tilemap.Rows - 1);
 
@@ -199,6 +231,9 @@ public class Game1 : Core
 
             // Assign a new random velocity to the bat
             AssignRandomBatVelocity();
+            
+                        // Play the collect sound effect
+            _collectSoundEffect.Play();
         }
 
         base.Update(gameTime);

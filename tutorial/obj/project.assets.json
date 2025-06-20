@@ -311,11 +311,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\tutorial\\tutorial.csproj",
+      "projectUniqueName": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\tutorial\\tutorial.csproj",
       "projectName": "tutorial",
-      "projectPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\tutorial\\tutorial.csproj",
+      "projectPath": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\tutorial\\tutorial.csproj",
       "packagesPath": "C:\\Users\\johnn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\tutorial\\obj\\",
+      "outputPath": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\tutorial\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\johnn\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -330,8 +330,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj": {
-              "projectPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj"
+            "C:\\Users\\johnn\\Documents\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj": {
+              "projectPath": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj"
             }
           }
         }

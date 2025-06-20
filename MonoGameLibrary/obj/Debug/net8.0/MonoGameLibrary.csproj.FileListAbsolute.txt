@@ -23,3 +23,16 @@ C:\Users\johnn\Documents\PersonalProgramming\monogame\tutorial\tutorial\monogame
 C:\Users\johnn\Documents\PersonalProgramming\monogame\tutorial\tutorial\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\refint\MonoGameLibrary.dll
 C:\Users\johnn\Documents\PersonalProgramming\monogame\tutorial\tutorial\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.pdb
 C:\Users\johnn\Documents\PersonalProgramming\monogame\tutorial\tutorial\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\ref\MonoGameLibrary.dll
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.deps.json
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.dll
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\bin\Debug\net8.0\MonoGameLibrary.pdb
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.csproj.AssemblyReference.cache
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.AssemblyInfoInputs.cache
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.AssemblyInfo.cs
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.csproj.CoreCompileInputs.cache
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.sourcelink.json
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.dll
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\refint\MonoGameLibrary.dll
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\MonoGameLibrary.pdb
+C:\Users\johnn\Documents\monogame-tutorial\MonoGameLibrary\obj\Debug\net8.0\ref\MonoGameLibrary.dll

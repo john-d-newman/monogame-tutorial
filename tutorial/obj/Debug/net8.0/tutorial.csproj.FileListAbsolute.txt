@@ -116,3 +116,11 @@ C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\aud
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\fonts\04B_30.xnb
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\fonts\04B_30_5x.xnb
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\images\background-pattern.xnb
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\audio\ui.xnb
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\GumCommon.dll
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\GumDataTypesNet6.dll
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\FlatRedBall.InterpolationCore.dll
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\ToolsUtilitiesStandard.dll
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\MonoGameGum.dll
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\TextCopy.dll

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\johnn\\Documents\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj": {}
+    "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\johnn\\Documents\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj": {
+    "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj",
         "projectName": "MonoGameLibrary",
-        "projectPath": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj",
+        "projectPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj",
         "packagesPath": "C:\\Users\\johnn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\MonoGameLibrary\\obj\\",
+        "outputPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\johnn\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -67,11 +67,23 @@
               "version": "[8.0.17, 8.0.17]"
             },
             {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[8.0.17, 8.0.17]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Ref",
               "version": "[8.0.17, 8.0.17]"
             },
             {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[8.0.17, 8.0.17]"
+            },
+            {
               "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.17, 8.0.17]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
               "version": "[8.0.17, 8.0.17]"
             }
           ],
@@ -81,6 +93,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

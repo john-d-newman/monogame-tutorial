@@ -289,6 +289,245 @@
           "bin/placeholder/MonoGameLibrary.dll": {}
         }
       }
+    },
+    "net8.0/win-x64": {
+      "FlatRedBall.GumCommon/2025.5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "FlatRedBall.GumDataTypes": "2025.5.1.1",
+          "FlatRedBall.ToolsUtilities.NetStandard": "2025.5.1.1"
+        },
+        "compile": {
+          "lib/net6.0/GumCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/GumCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "FlatRedBall.GumDataTypes/2025.5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "FlatRedBall.InterpolationCore": "2025.4.22.1",
+          "FlatRedBall.ToolsUtilities.NetStandard": "2025.5.1.1"
+        },
+        "compile": {
+          "lib/net6.0/GumDataTypesNet6.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/GumDataTypesNet6.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "FlatRedBall.InterpolationCore/2025.4.22.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "System.Data.DataSetExtensions": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/FlatRedBall.InterpolationCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/FlatRedBall.InterpolationCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "contentFiles": {
+          "contentFiles/any/any/_._": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
+      "FlatRedBall.ToolsUtilities.NetStandard/2025.5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/ToolsUtilitiesStandard.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/ToolsUtilitiesStandard.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Gum.MonoGame/2025.5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "FlatRedBall.GumCommon": "2025.5.1.1",
+          "FlatRedBall.GumDataTypes": "2025.5.1.1",
+          "FlatRedBall.ToolsUtilities.NetStandard": "2025.5.1.1",
+          "TextCopy": "6.2.1"
+        },
+        "compile": {
+          "lib/net6.0/MonoGameGum.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MonoGameGum.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "MonoGame.Content.Builder.Task/3.8.4": {
+        "type": "package",
+        "build": {
+          "build/MonoGame.Content.Builder.Task.props": {},
+          "build/MonoGame.Content.Builder.Task.targets": {}
+        }
+      },
+      "MonoGame.Framework.DesktopGL/3.8.4": {
+        "type": "package",
+        "dependencies": {
+          "MonoGame.Library.OpenAL": "1.23.1.10",
+          "MonoGame.Library.SDL": "2.32.2.1",
+          "NVorbis": "0.10.4"
+        },
+        "compile": {
+          "lib/net8.0/MonoGame.Framework.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MonoGame.Framework.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/MonoGame.Framework.DesktopGL.targets": {}
+        }
+      },
+      "MonoGame.Library.OpenAL/1.23.1.10": {
+        "type": "package",
+        "native": {
+          "runtimes/win-x64/native/openal.dll": {}
+        }
+      },
+      "MonoGame.Library.SDL/2.32.2.1": {
+        "type": "package",
+        "native": {
+          "runtimes/win-x64/native/SDL2.dll": {}
+        }
+      },
+      "NVorbis/0.10.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/NVorbis.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NVorbis.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Data.DataSetExtensions/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Data.DataSetExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Data.DataSetExtensions.dll": {}
+        }
+      },
+      "System.Memory/4.5.3": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      },
+      "TextCopy/6.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
+        },
+        "compile": {
+          "lib/net6.0/TextCopy.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/TextCopy.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MonoGameLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/MonoGameLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MonoGameLibrary.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -723,11 +962,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\tutorial\\tutorial.csproj",
+      "projectUniqueName": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\tutorial\\tutorial.csproj",
       "projectName": "tutorial",
-      "projectPath": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\tutorial\\tutorial.csproj",
+      "projectPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\tutorial\\tutorial.csproj",
       "packagesPath": "C:\\Users\\johnn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\tutorial\\obj\\",
+      "outputPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\tutorial\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\johnn\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -742,8 +981,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\johnn\\Documents\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj": {
-              "projectPath": "C:\\Users\\johnn\\Documents\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj"
+            "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj": {
+              "projectPath": "C:\\Users\\johnn\\Documents\\PersonalProgramming\\monogame\\tutorial\\tutorial\\monogame-tutorial\\MonoGameLibrary\\MonoGameLibrary.csproj"
             }
           }
         }
@@ -794,6 +1033,10 @@
             "version": "[8.0.17, 8.0.17]"
           },
           {
+            "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+            "version": "[8.0.17, 8.0.17]"
+          },
+          {
             "name": "Microsoft.NETCore.App.Host.win-x64",
             "version": "[8.0.17, 8.0.17]"
           },
@@ -802,7 +1045,15 @@
             "version": "[8.0.17, 8.0.17]"
           },
           {
+            "name": "Microsoft.NETCore.App.Runtime.win-x64",
+            "version": "[8.0.17, 8.0.17]"
+          },
+          {
             "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.17, 8.0.17]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
             "version": "[8.0.17, 8.0.17]"
           }
         ],
@@ -812,6 +1063,11 @@
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "win-x64": {
+        "#import": []
       }
     }
   }

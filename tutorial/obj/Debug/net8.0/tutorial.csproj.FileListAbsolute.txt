@@ -125,3 +125,4 @@ C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\MonoGameGum
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\TextCopy.dll
 C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\fonts\04b_30.fnt
+C:\Users\johnn\Documents\monogame-tutorial\tutorial\bin\Debug\net8.0\Content\effects\grayscaleEffect.xnb

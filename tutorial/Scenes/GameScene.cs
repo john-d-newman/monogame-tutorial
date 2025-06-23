@@ -42,6 +42,16 @@ public class GameScene : Scene
 
     private GameState _state;
 
+    // The grayscale shader effect.
+    private Effect _grayscaleEffect;
+
+    // The amount of saturation to provide the grayscale shader effect
+    private float _saturation = 1.0f;
+
+    // The speed of the fade to grayscale effect.
+    private const float FADE_SPEED = 0.02f;
+
+
     public override void Initialize()
     {
         // LoadContent is called during base.Initialize().
@@ -154,6 +164,9 @@ public class GameScene : Scene
 
         // Load the collect sound effect
         _collectSoundEffect = Content.Load<SoundEffect>("audio/collect");
+
+        // Load the grayscale effect
+        _grayscaleEffect = Content.Load<Effect>("effects/grayscaleEffect");
     }
 
     public override void Update(GameTime gameTime)
@@ -161,11 +174,17 @@ public class GameScene : Scene
         // Ensure the UI is always updated
         _ui.Update(gameTime);
 
-        // If the game is in a game over state, immediately return back
-        // here
-        if (_state == GameState.GameOver)
+        if (_state != GameState.Playing)
         {
-            return;
+            // The game is in either a paused or game over state, so
+            // gradually decrease the saturation to create the fading grayscale.
+            _saturation = Math.Max(0.0f, _saturation - FADE_SPEED);
+
+            // If its just a game over state, return back
+            if (_state == GameState.GameOver)
+            {
+                return;
+            }
         }
 
         // If the pause button is pressed, toggle the pause state
@@ -190,200 +209,217 @@ public class GameScene : Scene
         CollisionChecks();
     }
 
-private void CollisionChecks()
-{
-    // Capture the current bounds of the slime and bat
-    Circle slimeBounds = _slime.GetBounds();
-    Circle batBounds = _bat.GetBounds();
-
-    // FIrst perform a collision check to see if the slime is colliding with
-    // the bat, which means the slime eats the bat.
-    if (slimeBounds.Intersects(batBounds))
+    private void CollisionChecks()
     {
-        // Move the bat to a new position away from the slime.
-        PositionBatAwayFromSlime();
+        // Capture the current bounds of the slime and bat
+        Circle slimeBounds = _slime.GetBounds();
+        Circle batBounds = _bat.GetBounds();
 
-        // Randomize the velocity of the bat.
-        _bat.RandomizeVelocity();
+        // FIrst perform a collision check to see if the slime is colliding with
+        // the bat, which means the slime eats the bat.
+        if (slimeBounds.Intersects(batBounds))
+        {
+            // Move the bat to a new position away from the slime.
+            PositionBatAwayFromSlime();
 
-        // Tell the slime to grow.
-        _slime.Grow();
+            // Randomize the velocity of the bat.
+            _bat.RandomizeVelocity();
 
-        // Increment the score.
-        _score += 100;
+            // Tell the slime to grow.
+            _slime.Grow();
 
-        // Update the score display on the UI.
-        _ui.UpdateScoreText(_score);
+            // Increment the score.
+            _score += 100;
 
-        // Play the collect sound effect
-        Core.Audio.PlaySoundEffect(_collectSoundEffect);
+            // Update the score display on the UI.
+            _ui.UpdateScoreText(_score);
+
+            // Play the collect sound effect
+            Core.Audio.PlaySoundEffect(_collectSoundEffect);
+        }
+
+        // Next check if the slime is colliding with the wall by validating if
+        // it is within the bounds of the room.  If it is outside the room
+        // bounds, then it collided with a wall which triggers a game over.
+        if (slimeBounds.Top < _roomBounds.Top ||
+           slimeBounds.Bottom > _roomBounds.Bottom ||
+           slimeBounds.Left < _roomBounds.Left ||
+           slimeBounds.Right > _roomBounds.Right)
+        {
+            GameOver();
+            return;
+        }
+
+        // Finally, check if the bat is colliding with a wall by validating if
+        // it is within the bounds of the room.  If it is outside the room
+        // bounds, then it collided with a wall, and the bat should bounce
+        // off of that wall.
+        if (batBounds.Top < _roomBounds.Top)
+        {
+            _bat.Bounce(Vector2.UnitY);
+        }
+        else if (batBounds.Bottom > _roomBounds.Bottom)
+        {
+            _bat.Bounce(-Vector2.UnitY);
+        }
+
+        if (batBounds.Left < _roomBounds.Left)
+        {
+            _bat.Bounce(Vector2.UnitX);
+        }
+        else if (batBounds.Right > _roomBounds.Right)
+        {
+            _bat.Bounce(-Vector2.UnitX);
+        }
     }
+    private void PositionBatAwayFromSlime()
+    {
+        // Calculate the position that is in the center of the bounds
+        // of the room.
+        float roomCenterX = _roomBounds.X + _roomBounds.Width * 0.5f;
+        float roomCenterY = _roomBounds.Y + _roomBounds.Height * 0.5f;
+        Vector2 roomCenter = new Vector2(roomCenterX, roomCenterY);
 
-    // Next check if the slime is colliding with the wall by validating if
-    // it is within the bounds of the room.  If it is outside the room
-    // bounds, then it collided with a wall which triggers a game over.
-    if (slimeBounds.Top < _roomBounds.Top ||
-       slimeBounds.Bottom > _roomBounds.Bottom ||
-       slimeBounds.Left < _roomBounds.Left ||
-       slimeBounds.Right > _roomBounds.Right)
+        // Get the bounds of the slime and calculate the center position
+        Circle slimeBounds = _slime.GetBounds();
+        Vector2 slimeCenter = new Vector2(slimeBounds.X, slimeBounds.Y);
+
+        // Calculate the distance vector from the center of the room to the
+        // center of the slime.
+        Vector2 centerToSlime = slimeCenter - roomCenter;
+
+        // Get the bounds of the bat
+        Circle batBounds = _bat.GetBounds();
+
+        // Calculate the amount of padding we will add to the new position of
+        // the bat to ensure it is not sticking to walls
+        int padding = batBounds.Radius * 2;
+
+        // Calculate the new position of the bat by finding which component of
+        // the center to slime vector (X or Y) is larger and in which direction.
+        Vector2 newBatPosition = Vector2.Zero;
+        if (Math.Abs(centerToSlime.X) > Math.Abs(centerToSlime.Y))
+        {
+            // The slime is closer to either the left or right wall, so the Y
+            // position will be a random position between the top and bottom
+            // walls.
+            newBatPosition.Y = Random.Shared.Next(
+                _roomBounds.Top + padding,
+                _roomBounds.Bottom - padding
+            );
+
+            if (centerToSlime.X > 0)
+            {
+                // The slime is closer to the right side wall, so place the
+                // bat on the left side wall
+                newBatPosition.X = _roomBounds.Left + padding;
+            }
+            else
+            {
+                // The slime is closer ot the left side wall, so place the
+                // bat on the right side wall.
+                newBatPosition.X = _roomBounds.Right - padding * 2;
+            }
+        }
+        else
+        {
+            // The slime is closer to either the top or bottom wall, so the X
+            // position will be a random position between the left and right
+            // walls.
+            newBatPosition.X = Random.Shared.Next(
+                _roomBounds.Left + padding,
+                _roomBounds.Right - padding
+            );
+
+            if (centerToSlime.Y > 0)
+            {
+                // The slime is closer to the top wall, so place the bat on the
+                // bottom wall
+                newBatPosition.Y = _roomBounds.Top + padding;
+            }
+            else
+            {
+                // The slime is closer to the bottom wall, so place the bat on
+                // the top wall.
+                newBatPosition.Y = _roomBounds.Bottom - padding * 2;
+            }
+        }
+
+        // Assign the new bat position
+        _bat.Position = newBatPosition;
+    }
+    private void OnSlimeBodyCollision(object sender, EventArgs args)
     {
         GameOver();
-        return;
     }
 
-    // Finally, check if the bat is colliding with a wall by validating if
-    // it is within the bounds of the room.  If it is outside the room
-    // bounds, then it collided with a wall, and the bat should bounce
-    // off of that wall.
-    if (batBounds.Top < _roomBounds.Top)
+    private void TogglePause()
     {
-        _bat.Bounce(Vector2.UnitY);
-    }
-    else if (batBounds.Bottom > _roomBounds.Bottom)
-    {
-        _bat.Bounce(-Vector2.UnitY);
-    }
-
-    if (batBounds.Left < _roomBounds.Left)
-    {
-        _bat.Bounce(Vector2.UnitX);
-    }
-    else if (batBounds.Right > _roomBounds.Right)
-    {
-        _bat.Bounce(-Vector2.UnitX);
-    }
-}
-private void PositionBatAwayFromSlime()
-{
-    // Calculate the position that is in the center of the bounds
-    // of the room.
-    float roomCenterX = _roomBounds.X + _roomBounds.Width * 0.5f;
-    float roomCenterY = _roomBounds.Y + _roomBounds.Height * 0.5f;
-    Vector2 roomCenter = new Vector2(roomCenterX, roomCenterY);
-
-    // Get the bounds of the slime and calculate the center position
-    Circle slimeBounds = _slime.GetBounds();
-    Vector2 slimeCenter = new Vector2(slimeBounds.X, slimeBounds.Y);
-
-    // Calculate the distance vector from the center of the room to the
-    // center of the slime.
-    Vector2 centerToSlime = slimeCenter - roomCenter;
-
-    // Get the bounds of the bat
-    Circle batBounds =_bat.GetBounds();
-
-    // Calculate the amount of padding we will add to the new position of
-    // the bat to ensure it is not sticking to walls
-    int padding = batBounds.Radius * 2;
-
-    // Calculate the new position of the bat by finding which component of
-    // the center to slime vector (X or Y) is larger and in which direction.
-    Vector2 newBatPosition = Vector2.Zero;
-    if (Math.Abs(centerToSlime.X) > Math.Abs(centerToSlime.Y))
-    {
-        // The slime is closer to either the left or right wall, so the Y
-        // position will be a random position between the top and bottom
-        // walls.
-        newBatPosition.Y = Random.Shared.Next(
-            _roomBounds.Top + padding,
-            _roomBounds.Bottom - padding
-        );
-
-        if (centerToSlime.X > 0)
+        if (_state == GameState.Paused)
         {
-            // The slime is closer to the right side wall, so place the
-            // bat on the left side wall
-            newBatPosition.X = _roomBounds.Left + padding;
+            // We're now unpausing the game, so hide the pause panel
+            _ui.HidePausePanel();
+
+            // And set the state back to playing
+            _state = GameState.Playing;
         }
         else
         {
-            // The slime is closer ot the left side wall, so place the
-            // bat on the right side wall.
-            newBatPosition.X = _roomBounds.Right - padding * 2;
+            // We're now pausing the game, so show the pause panel
+            _ui.ShowPausePanel();
+
+            // And set the state to paused
+            _state = GameState.Paused;
+
+            // Set the grayscale effect saturation to 1.0f;
+            _saturation = 1.0f;
         }
+    }
+
+    private void GameOver()
+    {
+        // Show the game over panel
+        _ui.ShowGameOverPanel();
+
+        // Set the game state to game over
+        _state = GameState.GameOver;
+
+        // Set the grayscale effect saturation to 1.0f;
+        _saturation = 1.0f;
+    }
+    public override void Draw(GameTime gameTime)
+    {
+        // Clear the back buffer.
+        Core.GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            if (_state != GameState.Playing)
+    {
+        // We are in a game over state, so apply the saturation parameter.
+        _grayscaleEffect.Parameters["Saturation"].SetValue(_saturation);
+
+        // And begin the sprite batch using the grayscale effect.
+        Core.SpriteBatch.Begin(samplerState: SamplerState.PointClamp, effect: _grayscaleEffect);
     }
     else
     {
-        // The slime is closer to either the top or bottom wall, so the X
-        // position will be a random position between the left and right
-        // walls.
-        newBatPosition.X = Random.Shared.Next(
-            _roomBounds.Left + padding,
-            _roomBounds.Right - padding
-        );
-
-        if (centerToSlime.Y > 0)
-        {
-            // The slime is closer to the top wall, so place the bat on the
-            // bottom wall
-            newBatPosition.Y = _roomBounds.Top + padding;
-        }
-        else
-        {
-            // The slime is closer to the bottom wall, so place the bat on
-            // the top wall.
-            newBatPosition.Y = _roomBounds.Bottom - padding * 2;
-        }
+        // Otherwise, just begin the sprite batch as normal.
+        Core.SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
     }
 
-    // Assign the new bat position
-    _bat.Position = newBatPosition;
-}
-private void OnSlimeBodyCollision(object sender, EventArgs args)
-{
-    GameOver();
-}
+        // Draw the tilemap
+        _tilemap.Draw(Core.SpriteBatch);
 
-private void TogglePause()
-{
-    if (_state == GameState.Paused)
-    {
-        // We're now unpausing the game, so hide the pause panel
-        _ui.HidePausePanel();
+        // Draw the slime.
+        _slime.Draw();
 
-        // And set the state back to playing
-        _state = GameState.Playing;
+        // Draw the bat.
+        _bat.Draw();
+
+        // Always end the sprite batch when finished.
+        Core.SpriteBatch.End();
+
+        // Draw the UI
+        _ui.Draw();
     }
-    else
-    {
-        // We're now pausing the game, so show the pause panel
-        _ui.ShowPausePanel();
-
-        // And set the state to paused
-        _state = GameState.Paused;
-    }
-}
-
-private void GameOver()
-{
-    // Show the game over panel
-    _ui.ShowGameOverPanel();
-
-    // Set the game state to game over
-    _state = GameState.GameOver;
-}
-public override void Draw(GameTime gameTime)
-{
-    // Clear the back buffer.
-    Core.GraphicsDevice.Clear(Color.CornflowerBlue);
-
-    // Begin the sprite batch to prepare for rendering.
-    Core.SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
-
-    // Draw the tilemap
-    _tilemap.Draw(Core.SpriteBatch);
-
-    // Draw the slime.
-    _slime.Draw();
-
-    // Draw the bat.
-    _bat.Draw();
-
-    // Always end the sprite batch when finished.
-    Core.SpriteBatch.End();
-
-    // Draw the UI
-    _ui.Draw();
-}
 
 }
